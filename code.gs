@@ -48,15 +48,15 @@ var settings = {
     lang: 'en'
   },
   telegram: {
-  /*
-    * TELEGRAM BOT NOTIFICATIONS
-    *
-    * If you want to receive notifications via Telegram, set 'enabled' to true.
-    * You will need a Bot Token from @BotFather and your Chat ID.
-    */
-  enabled: false,
-  botToken: 'YOUR_BOT_TOKEN',
-  chatId: 'YOUR_CHAT_ID'
+    /*
+      * TELEGRAM BOT NOTIFICATIONS
+      *
+      * If you want to receive notifications via Telegram, set 'enabled' to true.
+      * You will need a Bot Token from @BotFather and your Chat ID.
+      */
+    enabled: false,
+    botToken: 'YOUR_BOT_TOKEN',
+    chatId: 'YOUR_CHAT_ID'
   },
   notifications: {
     /*
