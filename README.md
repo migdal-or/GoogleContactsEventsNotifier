@@ -212,8 +212,10 @@ permissions:
   Obviously this script needs your authorization to send you the email
   notifications. It won't send any other email to anyone.
 - **Connect to an external service**  
-  This permission is needed to check for updates and to load the profile images
-  of your contacts.
+  This permission is needed to
+  - check for updates
+  - load the profile images of your contacts
+  - send notifications to the Telegram Bot API (if enabled)
 
 ## Contributing
 

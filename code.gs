@@ -47,6 +47,17 @@ var settings = {
      */
     lang: 'en'
   },
+  telegram: {
+  /*
+    * TELEGRAM BOT NOTIFICATIONS
+    *
+    * If you want to receive notifications via Telegram, set 'enabled' to true.
+    * You will need a Bot Token from @BotFather and your Chat ID.
+    */
+  enabled: false,
+  botToken: 'YOUR_BOT_TOKEN',
+  chatId: 'YOUR_CHAT_ID'
+  },
   notifications: {
     /*
      * HOUR OF THE NOTIFICATION
@@ -2519,7 +2530,13 @@ function main (forceDate) {
     });
 
     log.add('Email sent.', Priority.INFO);
+
+    // Send Telegram notification if enabled.
+    log.add('Sending Telegram notification...', Priority.INFO);
+    var telegramMessage = '<b>' + emailData.subject + '</b>\n\n' + emailData.body;
+    sendTelegram(telegramMessage);
   }
+
 
   // Send the log if the debug options say so.
   log.sendEmail(settings.user.notificationEmail, settings.user.emailSenderName);
@@ -2615,4 +2632,35 @@ function dateWithTimezone (year, month, day, hour, minute, second, timezoneId) {
   // Apply the offse to the UTC date to get the correct date.
   date = new Date(date.getTime() - offset * 60000);
   return date;
+}
+
+/**
+ * Send a notification message to a Telegram bot.
+ *
+ * @param {string} text - The message text to send.
+ */
+function sendTelegram (text) {
+  if (!settings.telegram.enabled || settings.telegram.botToken === 'YOUR_BOT_TOKEN') {
+    return;
+  }
+
+  var url = 'https://api.telegram.org/bot' + settings.telegram.botToken + '/sendMessage'
+  var payload = {
+    'chat_id': settings.telegram.chatId,
+    'text': text,
+    'parse_mode': 'HTML'
+  }
+
+  var options = {
+    'method': 'post',
+    'contentType': 'application/json',
+    'payload': JSON.stringify(payload),
+    'muteHttpExceptions': true
+  }
+
+  try {
+    UrlFetchApp.fetch(url, options);
+  } catch (e) {
+    log.add('Telegram Error: ' + e.message, Priority.WARNING);
+  }
 }
