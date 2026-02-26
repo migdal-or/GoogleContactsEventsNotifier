@@ -66,6 +66,7 @@ These are the names of the variables:
 - `settings.notifications.maxPhonesCount`
 - `settings.notifications.indentSize`
 - `settings.notifications.compactGrouping`
+- `settings.telegram`
 
 ### Debugging options
 

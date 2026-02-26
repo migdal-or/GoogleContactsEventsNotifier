@@ -2,8 +2,8 @@
 
 ![Logo](images/Logo_alpha.png)
 
-Receive customized email notifications to alert you about incoming birthdays or
-other events of your Google contacts.
+Receive customized email and Telegram notifications to alert you about
+incoming birthdays or other events of your Google contacts.
 
 Have you ever wondered why on Earth would Google Calendar provide a calendar to
 remind you of your contact birthdays, but without letting you set up
